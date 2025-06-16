@@ -22,6 +22,7 @@ Netfoil is a dns proxy allowing for whitelisting of dns queries
 GOOS=linux \
 GOARCH=amd64 \
 GO111MODULE=on \
+GOPROXY=https://goproxy.io,direct \
 CGO_ENABLED=0 \
 go build -trimpath -o netfoil cmd/netfoil/main.go
 

@@ -12,6 +12,8 @@ Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  golang
 Requires:       systemd
 
+%global _unitdir /usr/lib/systemd/system
+
 %description
 Netfoil is a dns proxy allowing for whitelisting of dns queries
 

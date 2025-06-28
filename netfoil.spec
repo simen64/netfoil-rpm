@@ -21,6 +21,7 @@ Netfoil is a dns proxy allowing for whitelisting of dns queries
 %autosetup
 
 %build
+# NOTE: This requires an internet enabled build
 GOOS=linux \
 GOARCH=amd64 \
 GO111MODULE=on \

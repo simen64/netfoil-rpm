@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# pre copr script
+#git clone "https://github.com/simen64/netfoil-rpm"
+#bash ./netfoil-rpm/copr_script.sh
+
 set -euo pipefail
 
 PKGNAME="netfoil"
@@ -16,6 +20,5 @@ tar -czf "$PKGNAME-$VERSION.tar.gz" "$PKGNAME-$VERSION"
 rm -rf "$PKGNAME-$VERSION"
 
 # Get RPM
-git clone "https://github.com/simen64/$PKGNAME-rpm"
 mv netfoil-rpm/$PKGNAME.spec ./
 rm -rf "$PKGNAME-rpm"

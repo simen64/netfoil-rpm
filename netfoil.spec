@@ -39,7 +39,7 @@ install -D -m0644 packaging/systemd/netfoil.slice %{buildroot}%{_unitdir}/netfoi
 
 install -D -m0755 netfoil %{buildroot}%{_sbindir}/netfoil
 
-%posttrans
+%post
 %systemd_post netfoil.socket
 %systemd_post netfoil.service
 

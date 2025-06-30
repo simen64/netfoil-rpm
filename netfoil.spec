@@ -9,7 +9,7 @@ License:        Apache 2.0
 URL:            https://github.com/tinfoil-factory/netfoil
 Source0:        %{name}-%{version}.tar.gz
 
-BuildRequires:  golang
+BuildRequires:  golang systemd-rpm-macros
 Requires:       systemd
 
 %global _unitdir /usr/lib/systemd/system

@@ -40,16 +40,19 @@ install -D -m0644 packaging/systemd/netfoil.slice %{buildroot}%{_unitdir}/netfoi
 install -D -m0755 netfoil %{buildroot}%{_sbindir}/netfoil
 
 %post
-%systemd_post netfoil.socket
-%systemd_post netfoil.service
+/bin/systemctl enable netfoil.socket > /dev/null 2>&1 || :
+/bin/systemctl enable netfoil.service > /dev/null 2>&1 || :
 
 %preun
-%systemd_preun netfoil.service
-%systemd_preun netfoil.socket
+if [ $1 -eq 0 ] ; then
+    /bin/systemctl --no-reload disable netfoil.service > /dev/null 2>&1 || :
+    /bin/systemctl --no-reload disable netfoil.socket > /dev/null 2>&1 || :
+    /bin/systemctl stop netfoil.service > /dev/null 2>&1 || :
+    /bin/systemctl stop netfoil.socket > /dev/null 2>&1 || :
+fi
 
 %postun
-%systemd_postun netfoil.service
-%systemd_postun netfoil.socket
+/bin/systemctl daemon-reload > /dev/null 2>&1 || :
 
 %files
 %{_sbindir}/netfoil
